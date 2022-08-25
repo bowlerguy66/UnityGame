@@ -39,6 +39,7 @@ public class WorldManager : NetworkBehaviour {
 
     }
 
+	[ServerRpc(RequireOwnership = false)]
 	public void DropItem(Item item, Vector3 location) {
 		GameObject groundObj = Instantiate(groundItemPrefab);
 		groundObj.transform.position = location;

@@ -174,7 +174,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8686346014874567949}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -313,10 +313,11 @@ GameObject:
   - component: {fileID: 8888789034207348622}
   - component: {fileID: 8888789034207348621}
   - component: {fileID: -5210278151758790744}
+  - component: {fileID: 4297432297844479493}
   - component: {fileID: 7177762721766518667}
   - component: {fileID: 4251819922391777810}
+  - component: {fileID: 3793316137428831252}
   - component: {fileID: -3491696186450148141}
-  - component: {fileID: 4297432297844479493}
   - component: {fileID: 7737840721833223060}
   - component: {fileID: 7814232673577598150}
   - component: {fileID: 8888789034207348618}
@@ -424,6 +425,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4297432297844479493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8888789034207348617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774c5a859490c3f45a8bab943cf8ee9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7177762721766518667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,6 +476,21 @@ MonoBehaviour:
   startX: 0
   startZ: 0
   spawnRadius: 10
+--- !u!114 &3793316137428831252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8888789034207348617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2d33b3cbd6cf7459ceadece1d12882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 8888789034207348618}
+  _networkObjectCache: {fileID: 0}
 --- !u!114 &-3491696186450148141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,18 +508,6 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 8888789034207348618}
   renderDistance: 5
   updateTime: 0.5
---- !u!114 &4297432297844479493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8888789034207348617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 774c5a859490c3f45a8bab943cf8ee9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7737840721833223060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,7 +548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 2
+  <PrefabId>k__BackingField: 5
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 7807759643866311769

@@ -6,9 +6,9 @@ using UnityEngine;
 #pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
 public class Item {
 
-	private ItemID id;
-	private int count;
-	private bool stackable;
+	[SerializeField] private ItemID id;
+	[SerializeField] private int count;
+	[SerializeField] private bool stackable;
 
 	public Item(ItemID id, int count, bool stackable) {
 		this.id = id;
@@ -31,6 +31,14 @@ public class Item {
 			return id == toCompare.getID() && count == toCompare.getCount() && stackable == toCompare.isStackable();
 		} catch (Exception) { }
 		return false;
+	}
+
+	public override string ToString() {
+		return $"{id.ToString()}, {count}";
+	}
+
+	public Item clone() {
+		return new Item(id, count, stackable);
 	}
 
 	public ItemID getID() {

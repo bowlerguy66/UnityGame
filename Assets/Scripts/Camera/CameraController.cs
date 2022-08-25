@@ -39,6 +39,7 @@ public class CameraController : MonoBehaviour {
 
         obj.GetComponent<PlayerMovement>().setPlayerCamera(transform);
         obj.GetComponentInChildren<Canvas>().GetComponent<LookAtCamera>().SetCamera(cam);
+		obj.GetComponent<ItemPickup>().setCamera(gameObject);
 
     }
 

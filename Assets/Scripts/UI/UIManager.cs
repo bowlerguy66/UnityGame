@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour {
 
     private Canvas[] uiCanvases;
 	private GameObject[] mainCanvases;
-    // Controls if the mouse is controlling the game or not
+   // Controls if the mouse is controlling the game or not
     private bool uiMode;
 	private GameObject shownCanvas;
 
@@ -34,8 +34,7 @@ public class UIManager : MonoBehaviour {
 			if (obj.name == "Canvas_Pause") continue;
 			obj.SetActive(false);
 		}
-
-    }
+	}
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -45,7 +44,7 @@ public class UIManager : MonoBehaviour {
 			showUI(gameplayCanvas);
 			setUIMode(false);
         }
-    }
+	}
 
 	public void showUI(GameObject obj) {
 		if(obj.tag != "MainCanvas") {

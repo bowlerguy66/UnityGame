@@ -72,7 +72,7 @@ public class PlayerMovement : NetworkBehaviour {
         }
 
         // Update flying or not
-        if (Input.GetKeyDown(KeyCode.F)) {
+        if (Input.GetKeyDown(KeyCode.Z)) {
             flying = !flying;
         }
 

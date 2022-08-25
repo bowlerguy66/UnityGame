@@ -15,10 +15,8 @@ public class GameplayInventoryManager : MonoBehaviour {
 	private PlayerInventory inventory;
 	private GameObject[] itemObjects;
 
-	private bool itemObjectsLoaded;
-
 	private void Awake() {
-		itemObjectsLoaded = false;
+		loadItemObjects();
 		FirstObjectNotifier.OnFirstObjectSpawned += FirstObjectNotifier_OnFirstObjectSpawned;
 	}
 
@@ -38,15 +36,13 @@ public class GameplayInventoryManager : MonoBehaviour {
 	public void loadItemObjects() {
 		itemObjects = new GameObject[SHOWN_SLOTS];
 		for (int i = 0; i < SHOWN_SLOTS; i++) {
-			GameObject hostSlot = shownSlots[i];
 			itemObjects[i] = createItemObj(SHOWN_SLOT_NAMES[i], STARTING_SLOT + i, shownSlots[i]);
 		}
-		itemObjectsLoaded = true;
 	}
 
 	// Called by InventoryOpener every time the gameplay canvas is shown
 	public void SyncInventory() {
-		if (!itemObjectsLoaded) loadItemObjects();
+		if (inventory == null) return;
 		for (int i = 0; i < SHOWN_SLOTS; i++) {
 			GameObject itemObject = itemObjects[i];
 			int invSlotNumber = STARTING_SLOT + i;

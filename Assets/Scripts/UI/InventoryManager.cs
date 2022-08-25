@@ -38,6 +38,7 @@ public class InventoryManager : MonoBehaviour {
 				ItemInventory script = result.gameObject.GetComponent<ItemInventory>();
 				if (script == null) continue;
 				Item item = script.getItem();
+				Item toDrop = script.getItem().clone();
 				int slotNum = script.getSlotNumber();
 				if (item.getCount() > 1) {
 					inventory.getItem(slotNum).addCount(-1);
@@ -45,7 +46,8 @@ public class InventoryManager : MonoBehaviour {
 					deleteItemObject(script.getSlotNumber());
 					inventory.setItem(slotNum, null);
 				}
-				worldManager.DropItem(item, player.transform.position + new Vector3(0, 1, 0));
+				Debug.Log("sending over: " + toDrop.ToString());
+				worldManager.DropItem(toDrop, player.transform.position + new Vector3(0, 1, 0));
 			}
 		}
 

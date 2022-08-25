@@ -12,7 +12,7 @@ public class PlayerInventory : MonoBehaviour {
 
 	private Item[] slots;
 
-	private void Start() {
+	private void Awake() {
 		
 		slots = new Item[SLOT_COUNT];
 
@@ -20,6 +20,8 @@ public class PlayerInventory : MonoBehaviour {
 		setItem(0, new Item(ItemID.WOOD, 1));
 		setItem(24, new Item(ItemID.ROCK, 1));
 		setItem(4, new Item(ItemID.WOOD, 1));
+
+		Debug.Log("Executed start for player");
 
 	}
 
