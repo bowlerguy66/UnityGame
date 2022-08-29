@@ -39,10 +39,19 @@ public class WorldManager : NetworkBehaviour {
 
     }
 
+	// Awful solution because of problems with deserialization of Item
+	// Current workaround is to pass all members of the item individually to the servers method,
+	//   construction and deconstruction will work here I guess
+	public void DropItem(Item item, Vector3 location, Vector3 startingVel) {
+		DropItem(item.getID(), item.getCount(), item.isStackable(), location, startingVel);
+	}
+
 	[ServerRpc(RequireOwnership = false)]
-	public void DropItem(Item item, Vector3 location) {
+	public void DropItem(ItemID id, int count, bool stackable, Vector3 location, Vector3 startingVel) {
+		Item item = new Item(id, count, stackable);
 		GameObject groundObj = Instantiate(groundItemPrefab);
 		groundObj.transform.position = location;
+		groundObj.GetComponent<Rigidbody>().velocity = startingVel;
 		ItemGround groundScript = groundObj.GetComponent<ItemGround>();
 		groundScript.setItem(item);
 		ServerManager.Spawn(groundObj);

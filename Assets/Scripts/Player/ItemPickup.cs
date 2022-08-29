@@ -14,6 +14,9 @@ public class ItemPickup : NetworkBehaviour {
 			RaycastHit hit;
 			Physics.Raycast(playerCamera.transform.position + (playerCamera.transform.forward.normalized), playerCamera.transform.forward, out hit);
 			GameObject objHit = hit.transform.gameObject;
+			if (objHit.gameObject.name.StartsWith("Tree")) {
+				GetComponent<PlayerInventory>().addItem(new Item(ItemID.WOOD, 1));
+			}
 			ItemGround groundItem = objHit.GetComponent<ItemGround>();
 			if (groundItem != null) {
 				pickupItem(objHit);
@@ -31,7 +34,6 @@ public class ItemPickup : NetworkBehaviour {
 		bool itemAdded = inventory.addItem(groundItem.getItem());
 		if (itemAdded) {
 			ServerManager.Despawn(groundObject);
-			Debug.Log($"picked up {groundItem.getItem().ToString()}");
 		}
 
 	}

@@ -7,6 +7,8 @@ public class ChunkPopulator : MonoBehaviour {
 	public List<GameObject> objectsToPopulate;
 
 	public int count;
+	public float chanceToPopulate;
+	public List<BiomeType> requiredBiomes;
 	public bool randomRotationX;
 	public bool randomRotationY;
 	public bool randomRotationZ;
@@ -25,10 +27,14 @@ public class ChunkPopulator : MonoBehaviour {
 		int seed = TerrainManager.Instance.getSeed();
 		Random.InitState(seed + (int) (chunkPos.x * chunkPos.z) + 10000);
 
+		if ((Random.Range(0, 100) / 100f) > chanceToPopulate) return true;
+
 		for (int i = 0; i < count; i++) {
 
 			float locX = Random.Range(0, ChunkDataGenerator.size * ChunkDataGenerator.scale);
 			float locZ = Random.Range(0, ChunkDataGenerator.size * ChunkDataGenerator.scale);
+
+			if (!requiredBiomes.Contains(tm.getBiomeManager().getBiome(chunkPos.x + locX, chunkPos.z + locZ))) continue;
 
 			int layerMask = 1 << 6;
 			RaycastHit hit;

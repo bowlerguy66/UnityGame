@@ -6,9 +6,9 @@ using UnityEngine;
 #pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
 public class Item {
 
-	[SerializeField] private ItemID id;
-	[SerializeField] private int count;
-	[SerializeField] private bool stackable;
+	private ItemID id;
+	private int count;
+	private bool stackable;
 
 	public Item(ItemID id, int count, bool stackable) {
 		this.id = id;
@@ -17,6 +17,7 @@ public class Item {
 	}
 
 	public Item(ItemID id, int count) : this(id, count, true) {}
+	public Item() { }
 
 	/// <summary>
 	/// Checks if the item has the same id, ignores count and stackability

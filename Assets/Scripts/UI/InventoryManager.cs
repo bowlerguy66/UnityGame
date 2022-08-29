@@ -46,8 +46,9 @@ public class InventoryManager : MonoBehaviour {
 					deleteItemObject(script.getSlotNumber());
 					inventory.setItem(slotNum, null);
 				}
-				Debug.Log("sending over: " + toDrop.ToString());
-				worldManager.DropItem(toDrop, player.transform.position + new Vector3(0, 1, 0));
+				toDrop.setCount(1);
+				worldManager.DropItem(toDrop, player.transform.position + new Vector3(0, 1, 0), new Vector3(UnityEngine.Random.Range(-1, 1), 1, UnityEngine.Random.Range(-1, 1)));
+				syncFlag = true;
 			}
 		}
 
